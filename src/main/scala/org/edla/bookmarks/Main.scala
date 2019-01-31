@@ -9,8 +9,7 @@ object Main extends App {
     println("firefox JSON filename is needed")
     sys.exit(1)
   }
-  val filename = args(0)
-  //val filename                 = "/tmp/bookmarks-2019-01-31.json"
+  val filename                 = args(0)
   val fileContents             = Source.fromFile(filename).getLines.mkString
   val node                     = fileContents.parseJson.convertTo[Node]
   val bookmarks: Seq[Bookmark] = Bookmark.readTree(node)
